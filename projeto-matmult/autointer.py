@@ -37,7 +37,11 @@ for b in intervalo_t:
     for k in valores_k:
         func = f(b,k)
         if (func == 0) or (func <= 0 + tol and func >= 0 - tol):
-            inter.append(b)
+            y = ((-2*m.pi*k/5) - b) / 2
+            x = (-2*m.pi*k/5) - y
+
+            if x != y:
+                inter.append([x,y])
 
 #print(pontos)
 
