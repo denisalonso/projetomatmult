@@ -3,7 +3,7 @@ import numpy as np
 
 intervalo_t = np.arange(0,2*m.pi,0.01)
 
-tol = 0.08
+tol = 0.05
 
 def x(t):
     return 7*m.cos(t)-3*m.cos(6*t)
@@ -17,13 +17,12 @@ for t in intervalo_t:
     pontos.append([x(t),y(t)])
 
 for i in range(len(pontos)):
-    ponto_comparacao = pontos[i]
     for j in range(len(pontos)):
         if i != j:
             difx = abs(pontos[i][0]-pontos[j][0])
             dify = abs(pontos[i][1]-pontos[j][1])
             if (difx <= tol) and (dify <= tol):
-                inter.append(intervalo_t[j])
+                inter.append(intervalo_t[i])
 #print(pontos)
 
 print(inter)
