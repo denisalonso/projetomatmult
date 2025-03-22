@@ -29,20 +29,22 @@ def modelo(x, t):
 
 valores = np.arange(0, math.pi*2, 0.0001)
 
-xlinha = od(modelo, [4,0], valores)
+xy_linha = od(modelo, [0,7-18*math.cos(6)], valores) # [v0x,v0y]
 
 for i in range(len(valores)):
-   
-    if ((abs(xlinha[i][0]) <= 0.01 and abs(xlinha[i][0]) >= 0.001) or xlinha[i][0] == 0):
+    erro_x = abs(xy_linha[i][0])
+    erro_y = abs(xy_linha[i][1])
+
+    if erro_x <= 0.01:
         derivada_vertical.append(valores[i])
 
-    if ((abs(xlinha[i,1]) <= 0.00001 and abs(xlinha[i,1]) >= 0.000001) or xlinha[i,1] == 0):
+    if erro_y <= 0.01:
         derivada_horizontal.append(valores[i])
 
-print(xlinha[:][1])
+# print(xy_linha[:],[1])
 print(derivada_horizontal)
 
-#plt.plot(valores, xlinha)
+#plt.plot(valores, xy_linha)
 #plt.show()
 
 
