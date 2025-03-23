@@ -1,15 +1,17 @@
 import math as m
 import numpy as np
 
-intervalo_t = np.arange(0,2*m.pi,0.01)
+intervalo_u = np.arange(0,2*m.pi,0.1)
+intervalo_v = np.arange(0,2*m.pi,0.1)
 
-tol = 0.05
+tol = 0.001
 
 def x(t):
     return 7*m.cos(t)-3*m.cos(6*t)
 
 def y(t):
     return 7*m.sin(t)-3*m.sin(6*t)
+
 
 def f(b, k):
     return (-14 * m.sin(((-2*m.pi/5) * k) / 2) * m.sin(b)) - (6 * m.cos(((-2*m.pi/5) * k) * 3) * m.sin(3*b))
@@ -19,8 +21,15 @@ valores_k = [-1, -2, -3, -4, -5]
 
 pontos = []
 inter = []
-for t in intervalo_t:
-    pontos.append([x(t),y(t)])
+for u in intervalo_u:
+    for v in intervalo_v:
+        errox = abs(x(u)-x(v))
+        erroy = abs(x(u)-x(v))
+        if errox <= tol and erroy <= tol and u!=v:
+            print(errox,erroy, [u,v])
+            inter.append(u)
+            # inter.append(v)
+
 
 """
 for i in range(len(pontos)):
@@ -46,3 +55,6 @@ for b in intervalo_t:
 #print(pontos)
 
 print(inter)
+=======
+# for int in inter:
+#     print(int)
