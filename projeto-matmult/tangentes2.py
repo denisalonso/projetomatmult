@@ -13,10 +13,10 @@ for t in intervalo_t:
     errox = abs(xlinha)
     erroy = abs(ylinha)
 
-    if errox <= verif:
+    if errox <= verif and erroy > verif:
         ver.append(t)
     
-    if erroy <= verif:
+    if erroy <= verif and errox > verif:
         hor.append(t)
 
 print(ver)
