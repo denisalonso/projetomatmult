@@ -25,5 +25,5 @@ for b in intervalo_t:
                 inter.append([x,y])
 
 
-
-print(inter)
+for i in inter:
+    print(i)
